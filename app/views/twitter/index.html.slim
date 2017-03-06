@@ -1,0 +1,22 @@
+.col-md-6
+	= @followers_count
+	= @following_count
+	= @tweets_count
+	= @tweets.each do |t|
+		.tweet
+			.profile-image = image_tag t.user.profile_image_url
+			.content
+				.name = t.user.name
+				.screen-name = "@#{t.user.screen_name}"
+				.text
+					- text_w_links = ''
+					- t.text.split.each do |w|
+						- if w.include?('@')
+							- link = '<a class="hover-summary" rel="popover" id="' + w.gsub('@','') + '" href="/twitter/' + w.gsub('@','') + '">' + w + '</a>'
+							- text_w_links.concat(' ' + link)
+						- elsif w.include?('https')
+							- link = '<a href="' + w + '">' + w + '</a>'
+							- text_w_links.concat(' ' + link)
+						- else
+							- text_w_links.concat(' ' + w)
+					= text_w_links.html_safe
