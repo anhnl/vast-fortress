@@ -4,6 +4,7 @@ section
 			h3 Q1
 			p = 'string = "{key:[[value_1, value_2],[value_3, value4]], 5:10:00AM]}"'
 			p = "Expect: h = #{@expect_a1}"
+			h3 A1
 			p = "Got: #{@a1}"
 			= javascript_include_tag "https://gist.github.com/anhnl/e4e6fc0b50248a684b82bc9a099e223e.js"
 		.col-md-4
@@ -27,6 +28,7 @@ section
 			= javascript_include_tag "https://gist.github.com/anhnl/1f1e96e3375fef7c74a85b220fb8b5e6.js"
 			p = "zeros_count(1041)"
 			p = ">>> #{@a3}"
+			p The time complexity is O(log(n)) since the number of conversions decreases over time, while the space complexity is O(n) since the result was converted to binary as a string.
 
 	.row.to-twitter
 		.col-md-12
