@@ -31,9 +31,17 @@ $(document).ready(function() {
 			return n.toString()[0] + ',' + n.toString().slice(1,4);
 		}
 		else if (n > 9999 && n < 999999) {
-			return (n / 1000).toString().slice(0,4).replace('.','') + 'K';
+			var toHuman = (n / 1000).toString().slice(0,4);
+			if (toHuman[toHuman.length-1] == '.') {
+				toHuman = toHuman.replace('.','');
+			}
+			return toHuman + 'K';
 		} else if (n > 999999) {
-			return (n / 1000000).toString().slice(0,4).replace('.','') + 'M';
+			var toHuman = (n / 1000000).toString().slice(0,4);
+			if (toHuman[toHuman.length-1] == '.') {
+				toHuman = toHuman.replace('.','');
+			}
+			return toHuman + 'M';
 		} else {
 			return n;
 		}

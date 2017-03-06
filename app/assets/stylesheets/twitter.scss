@@ -20,15 +20,15 @@
 	}
 }
 .popover {
-	width: 260px;
+	width: 340px;
 }
 .count {
 	display: inline-block;
-	width: 75px;
+	width: 80px;
+	text-align: left;
 	.count-type {
+		text-transform: uppercase;
 		font-weight: bold;
-	}
-	.count-value {
-
+		font-size: 10px;
 	}
 }

@@ -1,20 +1,6 @@
 class TwitterController < ApplicationController
 	before_action :connect_twitter_api
 
-	def get_mentioned_info
-		require 'json'
-		@mentioned = @client.user(params[:mentioned])
-		@followers_count = @mentioned.followers_count
-		@following_count = @mentioned.friends_count
-		@tweets_count = @mentioned.statuses_count
-		result = {
-			:followers_count => @followers_count,
-			:following_count => @following_count,
-			:tweets_count => @tweets_count
-		}.to_json
-		render json: result
-	end
-
 	def index
 		@tweets = @client.user_timeline('casetabs').take(20)
 	end
@@ -23,6 +9,17 @@ class TwitterController < ApplicationController
 		user = params[:user]
 		@tweets = @client.user_timeline(user).take(20)
 		render 'index'
+	end
+
+	def get_mentioned_info
+		require 'json'
+		@mentioned = @client.user(params[:mentioned])
+		result = {
+			:followers_count => @mentioned.followers_count,
+			:following_count => @mentioned.friends_count,
+			:tweets_count => @mentioned.statuses_count
+		}.to_json
+		render json: result
 	end
 
 	private
