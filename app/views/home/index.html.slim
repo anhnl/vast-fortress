@@ -1,39 +1,33 @@
-.row
-	.col-md-4
-	.col-md-4
-		h3 Q2
-		p = "h = #{@q2}"
-		h3 A2
-		p = "class Sample"
-		= "  def initialize(arbitrary_hash)"
-		p = "  @h = ActiveSupport::HashWithIndifferentAccess.new(arbitrary_hash)"
-		p = "end"
-		p = "  def method_missing(name)"
-		p = "    h[name]"
-		p = "  end"
-		p = "end"
+section
+	.row
+		.col-md-4
+			h3 Q1
+			p = 'string = "{key:[[value_1, value_2],[value_3, value4]], 5:10:00AM]}"'
+			p = "Expect: h = #{@expect_a1}"
+			p = "Got: #{@a1}"
+			= javascript_include_tag "https://gist.github.com/anhnl/e4e6fc0b50248a684b82bc9a099e223e.js"
+		.col-md-4
+			h3 Q2
+			p = "h = #{@q2}"
+			h3 A2
+			= javascript_include_tag "https://gist.github.com/anhnl/b7ca947acf0c390e492610e7ede843f9.js?ts=2"
+			p = "c = Sample.new"
+			p = "c.this"
+			p = ">>> #{@a2.this}"
+			p = "c.that"
+			p = ">>> #{@a2.that}"
+			p = "c.other"
+			p = ">>> #{@a2.other}"
 
-		p = "c = Sample.new"
-		p = "c.this"
-		p = ">>> #{@a2.this}"
-		p = "c.that"
-		p = ">>> #{@a2.that}"
-		p = "c.other"
-		p = ">>> #{@a2.other}"
+		.col-md-4
 
-	.col-md-4
+			h3 Q3
+			p = @q3
+			h3 A3
+			= javascript_include_tag "https://gist.github.com/anhnl/1f1e96e3375fef7c74a85b220fb8b5e6.js"
+			p = "zeros_count(1041)"
+			p = ">>> #{@a3}"
 
-		h3 Q3
-		p = @q3
-		h3 A3
-		p = "zeros_count(1041)"
-		p = ">>> #{@a3}"
-		p = "def zeros_count(n)"
-		p = "binary = n.to_i.to_s(2)"
-		p = "split = binary.split('1')"
-		p = "split.max ? split.max.length : 0"
-		p = "end"
-
-.row.to-twitter
-	.col-md-12
-		= link_to 'CaseTabs Twitter', '/twitter', target: '_blank', class: 'btn btn-primary'
+	.row.to-twitter
+		.col-md-12
+			= link_to 'CaseTabs Twitter', '/twitter', target: '_blank', class: 'btn btn-primary'

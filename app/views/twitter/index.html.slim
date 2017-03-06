@@ -1,20 +1,21 @@
-.col-md-6
-	- @tweets.each do |t|
-		.tweet
-			.profile-image = image_tag t.user.profile_image_url
-			.content
-				.name = t.user.name
-				.screen-name = "@#{t.user.screen_name}"
-				.text
-					- text_w_links = ''
-					- t.text.split.each do |w|
-						- if w.include?('@')
-							- word = w.delete('^A-Za-z0-9 ')
-							- link = '<a class="hover-summary" rel="popover" id="' + word + '" href="/twitter/' + word + '">' + w + '</a>'
-							- text_w_links.concat(' ' + link)
-						- elsif w.include?('https')
-							- link = '<a href="' + w + '">' + w + '</a>'
-							- text_w_links.concat(' ' + link)
-						- else
-							- text_w_links.concat(' ' + w)
-					= text_w_links.html_safe
+section
+	.col-md-6
+		- @tweets.each do |t|
+			.tweet
+				.profile-image = image_tag t.user.profile_image_url
+				.content
+					.name = t.user.name
+					.screen-name = "@#{t.user.screen_name}"
+					.text
+						- text_w_links = ''
+						- t.text.split.each do |w|
+							- if w.include?('@')
+								- word = w.delete('^A-Za-z0-9 ')
+								- link = '<a class="hover-summary" rel="popover" id="' + word + '" href="/twitter/' + word + '">' + w + '</a>'
+								- text_w_links.concat(' ' + link)
+							- elsif w.include?('https')
+								- link = '<a href="' + w + '">' + w + '</a>'
+								- text_w_links.concat(' ' + link)
+							- else
+								- text_w_links.concat(' ' + w)
+						= text_w_links.html_safe
